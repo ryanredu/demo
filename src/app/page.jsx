@@ -8,7 +8,7 @@ async function getData(cookies) {
     cache: "no-store",
   };
   const posts = (
-    await (await fetch(`${process.env.HOST}/api/posts`, option)).json()
+    await (await fetch(`http://localhost:3000/api/posts`, option)).json()
   )["data"];
 
   return { posts };
