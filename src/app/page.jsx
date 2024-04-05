@@ -7,16 +7,16 @@ async function getData(cookies) {
     headers: { Cookie: cookies },
     cache: "no-store",
   };
-  const posts = (await (await fetch(`${process.env.HOST}/api/posts`, option)).json())[
-    "data"
-  ];
+  const posts = (
+    await (await fetch(`${process.env.HOST}/api/posts`, option)).json()
+  )["data"];
 
   return { posts };
 }
 
 // eslint-disable-next-line @next/next/no-async-client-component
 const Home = async () => {
-  const cookieStore = cookies()
+  const cookieStore = cookies();
   const data = await getData(cookieStore);
 
   return <PostList posts={data["posts"]} />;
